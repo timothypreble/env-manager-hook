@@ -1,0 +1,8 @@
+-   id: env-manager
+    name: Manage .env files
+    description: Create .env.example and ensure .env is gitignored
+    entry: env-manager
+    language: python
+    files: '\.env$'
+    pass_filenames: false
+    always_run: true
