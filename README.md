@@ -14,7 +14,7 @@ Add this to your `.pre-commit-config.yaml`:
 ```yaml
 repos:
   - repo: https://github.com/timothypreble/env-manager-hook
-    rev: v1.0.0
+    rev: v1.0.1
     hooks:
       - id: env-manager
 ```
@@ -27,7 +27,7 @@ The hook supports several options for different use cases:
 ```yaml
 repos:
   - repo: https://github.com/timothypreble/env-manager-hook
-    rev: v1.0.0
+    rev: v1.0.1
     hooks:
       - id: env-manager
 ```
@@ -37,7 +37,7 @@ This will process `.env` → `.env.example` and ensure `.env` is in `.gitignore`
 ```yaml
 repos:
   - repo: https://github.com/timothypreble/env-manager-hook
-    rev: v1.0.0
+    rev: v1.0.1
     hooks:
       - id: env-manager
         args: ['--env-file', '.env.production']
@@ -48,7 +48,7 @@ Perfect for projects with multiple environment files like `.env.staging`, `.env.
 ```yaml
 repos:
   - repo: https://github.com/timothypreble/env-manager-hook
-    rev: v1.0.0
+    rev: v1.0.1
     hooks:
       - id: env-manager
         args: ['--skip-gitignore']
@@ -59,7 +59,7 @@ Useful when you have a custom `.gitignore` setup or use global gitignore rules.
 ```yaml
 repos:
   - repo: https://github.com/timothypreble/env-manager-hook
-    rev: v1.0.0
+    rev: v1.0.1
     hooks:
       - id: env-manager-dev
         alias: env-manager-dev
@@ -74,7 +74,7 @@ Handle multiple environment files in one go (gitignore only updated once).
 ```yaml
 repos:
   - repo: https://github.com/timothypreble/env-manager-hook
-    rev: v1.0.0
+    rev: v1.0.1
     hooks:
       - id: env-manager-api
         alias: env-manager-api
