@@ -34,23 +34,21 @@ def create_env_example(env_path: Path) -> bool:
         for line in lines:
             stripped = line.strip()
             
-            # Skip empty lines
+            # Skip blank lines
             if not stripped:
-                example_lines.append(line)
                 continue
             
-            # Keep comments that start and end with ###
-            if stripped.startswith('###') and stripped.endswith('###'):
-                example_lines.append(line)
+            # Remove comments that do not start and end with ###
+            if stripped.startswith('#') and not (
+                stripped.startswith('###') and stripped.endswith('###')
+            ):
                 continue
             
             # Handle key=value pairs
             if '=' in stripped:
                 key = stripped.split('=', 1)[0]
-                # Preserve any inline comments that start and end with ###
-                comment_match = re.search(r'#.*###$', stripped)
-                comment = comment_match.group() if comment_match else ''
-                example_lines.append(f"{key}={comment}\n")
+                # Remove secrets by leaving values empty
+                example_lines.append(f"{key}=\n")
             else:
                 # Keep non-standard lines as-is
                 example_lines.append(line)
@@ -137,7 +135,9 @@ def main():
         if not create_env_example(env_path):
             success = False
     else:
-        print(f"ℹ️  No {args.env_file} file found, skipping .env.example creation")
+        print(
+            "ℹ️  No .env file found, skipping .env.example creation"
+        )
     
     # Handle .gitignore
     if not args.skip_gitignore:
