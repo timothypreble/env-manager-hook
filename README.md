@@ -110,12 +110,36 @@ The hook will create `.env.example`:
 # Environment variables template
 # Copy this file to .env and fill in your actual values
 
-# Database settings
 DB_HOST=
 DB_PASSWORD=
-API_KEY=  # OpenAI API key
+API_KEY=
+DEBUG=
+```
 
-# App settings
+## Comment Preservation
+
+The `.env.example` file will only preserve comments that start and end with `###`. All other comments will be removed to ensure clarity and consistency.
+
+### Example
+
+Given a `.env` file:
+```bash
+# General settings
+APP_NAME=my_app
+### Important comment ###
+APP_ENV=production
+# Debug settings
+DEBUG=true
+```
+
+The hook will create `.env.example`:
+```bash
+# Environment variables template
+# Copy this file to .env and fill in your actual values
+
+APP_NAME=
+### Important comment ###
+APP_ENV=
 DEBUG=
 ```
 
@@ -151,4 +175,3 @@ env-manager --env-file .env.production --skip-gitignore
 - ✅ **Smart value stripping** - Removes secrets but keeps structure
 - ✅ **Comment preservation** - Maintains inline comments for context
 - ✅ **Flexible file paths** - Works with nested directories and custom names
--
